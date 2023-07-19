@@ -9,10 +9,14 @@ class Login{
     static config={
         cor:null,//#048
         img:null,
-        endpoint:null,//loginv1.apeludo-sxsx.repl.co
+        endpoint:null,//loginv1.apeludo-sxsx.repl.co/
     };
 
     static login=(callback_ok,callback_naook,config)=>{
+        sessionStorage.setItem("logado",false);
+        sessionStorage.setItem("matlogado",null);
+        sessionStorage.setItem("nomelogado",null);
+        sessionStorage.setItem("acessologado",null);
         this.config=config
         this.callback_ok=()=>{callback_ok()};
         this.callback_naook=()=>{callback_naook()};
@@ -101,6 +105,10 @@ class Login{
         btn_cancelar.setAttribute("id","btn_cancelar")
         btn_cancelar.innerHTML="Cancelar"
         btn_cancelar.addEventListener("click",()=>{
+            sessionStorage.setItem("logado",false);
+            sessionStorage.setItem("matlogado",null);
+            sessionStorage.setItem("nomelogado",null);
+            sessionStorage.setItem("acessologado",null);
             this.fechar()
         })
         botoesLogin.appendChild(btn_cancelar)
@@ -130,8 +138,8 @@ class Login{
                 sessionStorage.setItem("matlogado",mat);
                 sessionStorage.setItem("nomelogado",res.nome);
                 sessionStorage.setItem("acessologado",res.acesso);
-                sessionStorage.setItem(this.callback_ok());
-                sessionStorage.setItem(this.fechar());
+                this.callback_ok();
+                this.fechar();
             }else{
                 sessionStorage.setItem("logado",false);
                 sessionStorage.setItem("matlogado",null);
