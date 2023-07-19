@@ -7,16 +7,13 @@ class Login{
     static callback_ok=null;
     static callback_naook=null;
     static config={
-        cor:"#048",
-        img:"logo.jpeg"
+        cor:null,//#048
+        img:null,
+        endpoint:null,//loginv1.apeludo-sxsx.repl.co
     };
 
-    static endpoint="https://loginv1--apeludo-sxsx.repl.co/"
-
-    static login=(callback_ok,callback_naook,config=null)=>{
-         if(config!=null){
-            this.config=config
-        }
+    static login=(callback_ok,callback_naook,config)=>{
+        this.config=config
         this.callback_ok=()=>{callback_ok()};
         this.callback_naook=()=>{callback_naook()};
         this.estilocss=
@@ -124,11 +121,11 @@ class Login{
         const mat= document.querySelector("#f_username").value;
         const pas= document.querySelector("#f_senha").value;
 
-        const endpoint=`https://loginv1--apeludo-sxsx.repl.co/?matricula=${mat}&senha=${pas}`
+        const endpoint=`${this.config.endpoint}/?matricula=${mat}&senha=${pas}`
         fetch(endpoint)
         .then(res=>res.json())
         .then(res=>{
-           if (res){
+            if (res){
                 sessionStorage.setItem("logado","true");
                 sessionStorage.setItem("matlogado",mat);
                 sessionStorage.setItem("nomelogado",res.nome);
@@ -157,6 +154,7 @@ class Login{
 }
 
 //export {Login};
+
 /* Exemplo da api usada como teste:
 var http = require('http')
 var url = require('url')   
