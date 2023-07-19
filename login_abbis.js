@@ -129,17 +129,17 @@ class Login{
         .then(res=>res.json())
         .then(res=>{
            if (res){
-                sessionStorage.setItem(this.logado=true);
-                sessionStorage.setItem(this.matlogado=mat);
-                sessionStorage.setItem(this.nomelogado=res.nome);
-                sessionStorage.setItem(this.acessologado=res.acesso);
+                sessionStorage.setItem("logado","true");
+                sessionStorage.setItem("matlogado",mat);
+                sessionStorage.setItem("nomelogado",res.nome);
+                sessionStorage.setItem("acessologado",res.acesso);
                 sessionStorage.setItem(this.callback_ok());
                 sessionStorage.setItem(this.fechar());
             }else{
-                sessionStorage.setItem(this.logado=false);
-                sessionStorage.setItem(this.matlogado=null);
-                sessionStorage.setItem(this.nomelogado=null);
-                sessionStorage.setItem(this.acessologado=null);
+                sessionStorage.setItem("logado",false);
+                sessionStorage.setItem("matlogado",null);
+                sessionStorage.setItem("nomelogado",null);
+                sessionStorage.setItem("acessologado",null);
                 this.callback_naook()
             }
         })
