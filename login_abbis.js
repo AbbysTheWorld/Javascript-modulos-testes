@@ -128,18 +128,18 @@ class Login{
         fetch(endpoint)
         .then(res=>res.json())
         .then(res=>{
-            if (res){
-                this.logado=true;
-                this.matlogado=mat;
-                this.nomelogado=res.nome;
-                this.acessologado=res.acesso;
-                this.callback_ok();
-                this.fechar();
+           if (res){
+                sessionStorage.setItem(this.logado=true);
+                sessionStorage.setItem(this.matlogado=mat);
+                sessionStorage.setItem(this.nomelogado=res.nome);
+                sessionStorage.setItem(this.acessologado=res.acesso);
+                sessionStorage.setItem(this.callback_ok());
+                sessionStorage.setItem(this.fechar());
             }else{
-                this.logado=false;
-                this.matlogado=null;
-                this.nomelogado=null;
-                this.acessologado=null;
+                sessionStorage.setItem(this.logado=false);
+                sessionStorage.setItem(this.matlogado=null);
+                sessionStorage.setItem(this.nomelogado=null);
+                sessionStorage.setItem(this.acessologado=null);
                 this.callback_naook()
             }
         })
