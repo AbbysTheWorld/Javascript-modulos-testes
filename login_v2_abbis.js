@@ -11,9 +11,7 @@ class Login{
         img:null,
         endpoint:null,//loginv1.apeludo-sxsx.repl.co
     };
-
-    static endpoint="https://loginv1--apeludo-sxsx.repl.co/"
-
+    
     static login=(callback_ok,callback_naook,config)=>{
         this.config=config
         this.callback_ok=()=>{callback_ok()};
